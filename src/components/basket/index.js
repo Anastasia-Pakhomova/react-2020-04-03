@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Typography } from 'antd';
 
@@ -14,12 +15,13 @@ function Basket({ title = 'Basket', className, total, orderProducts }) {
       <Typography.Title level={4} className={styles.title}>
         {title}
       </Typography.Title>
-      {orderProducts.map(({ product, amount, subtotal }) => (
+      {orderProducts.map(({ product, amount, subtotal, restaurantId }) => (
         <BasketItem
           product={product}
           amount={amount}
           key={product.id}
           subtotal={subtotal}
+          restaurantId={restaurantId}
         />
       ))}
       <hr />
@@ -27,9 +29,11 @@ function Basket({ title = 'Basket', className, total, orderProducts }) {
       <BasketRow leftContent="Sub-total" rightContent={`${total} $`} />
       <BasketRow leftContent="Delivery costs" rightContent="FREE" />
       <BasketRow leftContent="Total" rightContent={`${total} $`} />
-      <Button type="primary" size="large" block>
-        order
-      </Button>
+      <Link to="/checkout">
+        <Button type="primary" size="large" block>
+          order
+        </Button>
+      </Link>
     </div>
   );
 }
