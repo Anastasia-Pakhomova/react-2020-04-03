@@ -4,3 +4,14 @@
   padding: 18px;
   text-align: center;
 }
+
+.select {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.flag {
+  height: 24px;
+  margin-right: 12px;
+}
